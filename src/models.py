@@ -1,4 +1,5 @@
 from dataclasses import dataclass, field
+from decimal import Decimal
 from typing import Any, Dict, List, Optional
 
 
@@ -17,9 +18,15 @@ class ValidatedCustomerRecord:
     customer_name: str
     email: str
     tax_year: int
-    income: float
-    withholding: float
+    income: Decimal
+    withholding: Decimal
     source_file: Optional[str] = None
+
+    def __post_init__(self):
+        if not isinstance(self.income, Decimal):
+            self.income = Decimal(str(self.income))
+        if not isinstance(self.withholding, Decimal):
+            self.withholding = Decimal(str(self.withholding))
 
     def to_dict(self) -> Dict[str, Any]:
         return {
