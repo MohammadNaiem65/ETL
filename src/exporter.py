@@ -5,18 +5,10 @@ from pathlib import Path
 from decimal import Decimal
 from typing import Any, List, Union
 
+from src.constants import CSV_FIELDNAMES
 from src.models import ValidatedCustomerRecord, ValidationReport
 
 logger = logging.getLogger(__name__)
-
-CSV_FIELDNAMES = [
-    "customer_name",
-    "email",
-    "tax_year",
-    "income",
-    "withholding",
-    "source_file",
-]
 
 def _json_serial(obj: Any) -> Any:
     if isinstance(obj, Decimal):
