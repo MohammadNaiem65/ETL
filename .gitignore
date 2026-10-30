@@ -5,6 +5,15 @@ build/
 dist/
 wheels/
 *.egg-info
+.pytest_cache/
 
 # Virtual environments
-.venv
+.venv/
+
+# Environment / OS
+.DS_Store
+.idea/
+
+# Application generated data outputs
+data/output/*
+!data/output/.gitkeep
